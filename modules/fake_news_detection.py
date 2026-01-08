@@ -14,6 +14,14 @@ import joblib
 import numpy as np
 from typing import Dict, Any, List, Optional
 from collections import Counter
+from .download_datasets import ensure_datasets
+
+
+# Ensure CSV datasets are present for fake news utilities that may read them.
+try:
+    ensure_datasets()
+except Exception as _e:
+    print(f"Warning: dataset downloader failed: {_e}")
 
 
 class FakeNewsDetectionEngine:
