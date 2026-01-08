@@ -13,6 +13,14 @@ import requests
 from typing import Dict, Any
 from PIL import Image
 from .deepfake_analyzer import DeepfakeAnalyzer
+from .download_datasets import ensure_datasets
+
+
+# Ensure CSV datasets are present (no-op if already downloaded)
+try:
+    ensure_datasets()
+except Exception as _e:
+    print(f"Warning: dataset downloader failed: {_e}")
 
 
 class AIAnalysisEngine:
